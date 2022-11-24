@@ -7,6 +7,7 @@ import { createDecipheriv } from 'crypto'
 import { Trash } from './svg'
 import styles from '../styles/TodoList.module.css'
 import { css } from '@emotion/react'
+import { setSyntheticLeadingComments } from 'typescript'
 
 type Todo = {
   id: string;
@@ -73,19 +74,23 @@ const TodoList = () => {
     }
   }
 
-  const enter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if(e.key == "Enter") {
-      e.preventDefault();
-      store();
-    }
-  }
-
   useEffect(() => {
     getTodoList();
   }, [])
 
   return (
     <>
+      <input
+        className={styles.addForm}
+        type="text"
+        ref={formRef}
+      />
+      <button
+        className={styles.addButton}
+        onClick={store}
+      >
+        +
+      </button>
       {todoList && (
         <ul>
           {todoList.map((props, index) => (

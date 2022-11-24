@@ -5,3 +5,14 @@
   border: transparent;
   padding: 0;
 }
+
+.addForm{
+  border-radius: 50vh;
+  height: 30px;
+}
+
+.addButton{
+  border-radius: 50vh;
+  width: 30px;
+  height: 30px;
+}
