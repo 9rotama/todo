@@ -11,8 +11,6 @@ import { css } from '@emotion/react'
 type Todo = {
   id: string;
   context: string;
-  created: string;
-  updated: string;
 }
 
 // 仮データ
@@ -20,21 +18,15 @@ const mockData: Todo[] = [
   {
     id: Math.random().toString(32).substring(2),
     context: "キャベツ買う",
-    created: Date.now().toString(),
-    updated: Date.now().toString(),
   },
   {
     id: Math.random().toString(32).substring(2),
     context: "ニンジン買う",
-    created: Date.now().toString(),
-    updated: Date.now().toString(),
   },
 
   {
     id: Math.random().toString(32).substring(2),
     context: "豚肉買う",
-    created: Date.now().toString(),
-    updated: Date.now().toString(),
   },
 ];
 
@@ -55,8 +47,6 @@ const TodoList = () => {
     const newTodo: Todo = {
       id: Math.random().toString(32).substring(2),
       context: todo,
-      created: Date.now().toString(),
-      updated: Date.now().toString(),
     };
     setTodoList(todoList.concat([newTodo]));
   }
