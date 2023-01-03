@@ -4,10 +4,9 @@ import type { NextPage } from 'next'
 import React, { useState, useRef, useEffect } from 'react'
 import axios from 'axios'
 import { createDecipheriv } from 'crypto'
-import { Trash } from './svg'
+import { Done, Add } from './icon'
 import styles from '../styles/TodoList.module.css'
 import { css } from '@emotion/react'
-import { setSyntheticLeadingComments } from 'typescript'
 
 type Todo = {
   id: string;
@@ -79,29 +78,32 @@ const TodoList = () => {
   }, [])
 
   return (
-    <>
-      <input
-        className={styles.addForm}
-        type="text"
-        ref={formRef}
-      />
-      <button
-        className={styles.addButton}
-        onClick={store}
-      >
-        +
-      </button>
+    <div className={styles.wrap}>
+      <div className={styles.addForm}>
+        <input
+          className={styles.addInput}
+          type="text"
+          ref={formRef}
+        >
+        </input>
+        <button
+          className={styles.addButton}
+          onClick={store}
+        >
+          {Add}
+        </button>
+      </div>
       {todoList && (
-        <ul>
+        <ul className={styles.todoList}>
           {todoList.map((props, index) => (
-            <li key={index}>
-              {props.context}
-              <button className={styles.trash} onClick={() => deleteTodo(props.id)}>{Trash}</button>
+            <li key={index} className={styles.todo}>
+              <button className={styles.doneButton} onClick={() => deleteTodo(props.id)}>{Done}</button>
+              <p className={styles.todoContext}>{props.context}</p>
             </li>
           ))}
         </ul>
       )}
-    </>
+    </div>
   );
 }
 

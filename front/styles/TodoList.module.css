@@ -1,18 +1,86 @@
-.trash {
-  width: 2em;
-  height: 2em;
+.wrap {
+}
+
+.todoList{
+  display: flex;
+  flex-flow: column;
+  gap: 10px;
+}
+
+.todo{
+  list-style-type: none!important;
+  background: #1B1F25;
+  box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  width: 400px;
+  height: 60px;
+  border-radius: 50vh;
+  margin: 0 auto;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.todoContext{
+  color: #B0B7C8;
+  width: 300px;
+}
+
+.doneButton {
   border-radius: 50%;
   border: transparent;
-  padding: 0;
+  background: #364261;
+  color: #B0B7C8;
+
+  width: 40px;
+  height: 40px;
+  padding: 5px;
 }
 
-.addForm{
-  border-radius: 50vh;
-  height: 30px;
+.doneButton:hover{
+  background: #4a5467;
 }
 
-.addButton{
+.addForm {
   border-radius: 50vh;
-  width: 30px;
-  height: 30px;
+  background: #364261;
+
+  width: 400px;
+  height: 60px;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+}
+
+.addInput{
+  border: transparent;
+  background: transparent;
+  color: #B0B7C8;
+
+  width: 300px;
+  overflow: hidden;
+}
+
+.addInput:focus {
+  outline: transparent;
+}
+
+.addButton {
+  border-radius: 50vh;
+  border: transparent;
+  background: #194ED7;
+  color: #D7DDED;
+
+  width: 40px;
+  height: 40px;
+  margin: 0 0 0 auto;
+}
+
+.addButton:hover {
+  background: #3561d1;
 }
