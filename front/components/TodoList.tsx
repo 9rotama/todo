@@ -10,23 +10,23 @@ import { css } from '@emotion/react'
 
 type Todo = {
   id: string;
-  context: string;
+  name: string;
 }
 
 // 仮データ
 const mockData: Todo[] = [
   {
     id: Math.random().toString(32).substring(2),
-    context: "キャベツ買う",
+    name: "キャベツ買う",
   },
   {
     id: Math.random().toString(32).substring(2),
-    context: "ニンジン買う",
+    name: "ニンジン買う",
   },
 
   {
     id: Math.random().toString(32).substring(2),
-    context: "豚肉買う",
+    name: "豚肉買う",
   },
 ];
 
@@ -46,7 +46,7 @@ const TodoList = () => {
   const addTodo = async (todo: string) => {
     const newTodo: Todo = {
       id: Math.random().toString(32).substring(2),
-      context: todo,
+      name: todo,
     };
     setTodoList(todoList.concat([newTodo]));
   }
@@ -88,7 +88,7 @@ const TodoList = () => {
           {todoList.map((props, index) => (
             <li key={index} className={styles.todo}>
               <button className={styles.doneButton} onClick={() => deleteTodo(props.id)}>{Done}</button>
-              <p className={styles.todoContext}>{props.context}</p>
+              <p className={styles.todoContext}>{props.name}</p>
             </li>
           ))}
         </ul>
