@@ -6,8 +6,8 @@ import (
 )
 
 type Task struct {
-	ID       uuid.UUID
-	Name     string
+	ID       uuid.UUID `json:"id"`
+	Name     string	`json:"name"`
 }
 
 func GetTasks() ([]Task, error) {

@@ -21,7 +21,7 @@ func GetTasksHandler(c echo.Context) error {
 }
 
 func AddTaskHandler(c echo.Context) error {
-    var req ReqTask
+  var req ReqTask
 	err := c.Bind(&req)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, "Bad Request")
