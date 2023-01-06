@@ -13,23 +13,6 @@ type Todo = {
   name: string;
 }
 
-// 仮データ
-const mockData: Todo[] = [
-  {
-    id: Math.random().toString(32).substring(2),
-    name: "キャベツ買う",
-  },
-  {
-    id: Math.random().toString(32).substring(2),
-    name: "ニンジン買う",
-  },
-
-  {
-    id: Math.random().toString(32).substring(2),
-    name: "豚肉買う",
-  },
-];
-
 const TodoList = () => {
   const [todoList, setTodoList] = useState<Todo[]>([]);
 
@@ -40,20 +23,25 @@ const TodoList = () => {
   const formRef = useRef<HTMLInputElement | null>(null);
 
   const getTodoList = async () => {
-    setTodoList(mockData);
+    apiClient.get('/api/tasks').then((res) => {
+      console.log(res.data[0].name)
+      setTodoList(res.data);
+    })
   }
 
-  const addTodo = async (todo: string) => {
-    const newTodo: Todo = {
-      id: Math.random().toString(32).substring(2),
-      name: todo,
-    };
-    setTodoList(todoList.concat([newTodo]));
+  const addTodo = async (name: string) => {
+    apiClient.post('/api/tasks', {
+      name: name
+    }).then((res) => {
+      getTodoList();
+    })
   }
 
   const deleteTodo = async (id: string) => {
-    const newTodoList = todoList.filter((todo) => todo.id !== id);
-    setTodoList(newTodoList);
+    apiClient.delete('/api/tasks/' + id
+    ).then((res) => {
+      getTodoList();
+    })
   }
 
   const store = async () => {
